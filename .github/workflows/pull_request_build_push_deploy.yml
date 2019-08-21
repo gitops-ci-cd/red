@@ -8,27 +8,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-      if: github.event.action == 'labeled' && contains( github.event.pull_request.labels, 'deploy' )
+    - uses: actions/bin/filter@master
+      with:
+        args: label deploy
     - name: docker login
-      uses: actions/docker/login@313deac5bd89b2114c8d6dd264e6baad00be374f
+      uses: actions/docker/login@master
       env:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
     - name: docker build
-      uses: actions/docker/cli@313deac5bd89b2114c8d6dd264e6baad00be374f
+      uses: actions/docker/cli@master
       env:
         SERVICE: ${{ secrets.SERVICE }}
       with:
         args: build -t $SERVICE .
     - name: docker tag
-      uses: actions/docker/tag@313deac5bd89b2114c8d6dd264e6baad00be374f
+      uses: actions/docker/tag@master
       env:
         SERVICE: ${{ secrets.SERVICE }}
         TARGET_IMAGE: ${{ secrets.TARGET_IMAGE }}
       with:
         args: $SERVICE $TARGET_IMAGE
     - name: docker push sha
-      uses: actions/docker/cli@313deac5bd89b2114c8d6dd264e6baad00be374f
+      uses: actions/docker/cli@master
       env:
         TARGET_IMAGE: ${{ secrets.TARGET_IMAGE }}
       with:
