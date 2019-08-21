@@ -6,7 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-      if: github.event.action == 'closed'
+    - uses: actions/bin/filter@master
+      with:
+        args: action closed
     - name: git commit cleanup overlay
       uses: actions/kustomized-namespace-cleanup-overlay@v0.9.0
       env:
