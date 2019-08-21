@@ -6,9 +6,9 @@ jobs:
   docker:
     name: Build and push Docker Image
     runs-on: ubuntu-latest
-    if: github.event.action == 'labeled' && contains( github.event.pull_request.labels, 'deploy' )
     steps:
     - uses: actions/checkout@master
+      if: github.event.action == 'labeled' && contains( github.event.pull_request.labels, 'deploy' )
     - name: docker login
       uses: actions/docker/login@313deac5bd89b2114c8d6dd264e6baad00be374f
       env:
