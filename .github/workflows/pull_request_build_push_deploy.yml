@@ -41,8 +41,8 @@ jobs:
     needs: docker
     steps:
     - uses: actions/checkout@master
-    - name: git commit create overlay
-      uses: actions/kustomized-namespace-create-overlay@v0.9.0
+    - name: Kustomized Namespace - Create Overlay
+      uses: zyngl/create_kustomized_namespace@v0.9.0
       env:
         CLUSTER_REPO: ${{ secrets.CLUSTER_REPO }}
         SERVICE: ${{ secrets.SERVICE }}
