@@ -1,6 +1,9 @@
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 
-on: pull_request
+on:
+  pull_request:
+    labeled:
+    - deploy
 name: Build, push, and deploy
 jobs:
   docker:
@@ -8,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: actions/bin/filter@master
-      with:
-        args: label deploy
     - name: docker login
       uses: actions/docker/login@master
       env:
