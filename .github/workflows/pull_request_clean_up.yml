@@ -1,5 +1,7 @@
 on:
-  pull_request: closed
+  pull_request:
+    action:
+    - closed
 name: Clean up
 jobs:
   tear_down:
