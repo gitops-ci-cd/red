@@ -2,8 +2,9 @@
 
 on:
   pull_request:
-    labeled:
-    - deploy
+    action:
+      labeled:
+      - deploy
 name: Build, push, and deploy
 jobs:
   docker:
