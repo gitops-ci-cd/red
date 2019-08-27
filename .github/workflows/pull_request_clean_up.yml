@@ -1,6 +1,5 @@
 on:
-  pull_request:
-  - closed
+  pull_request: closed
 name: Clean up
 jobs:
   tear_down:
