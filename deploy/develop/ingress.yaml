@@ -4,14 +4,14 @@ kind: Ingress
 metadata:
   name: red
   annotations:
-    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
     - host: localhost
       http:
         paths:
-          - path: /red
+          - path: /red(/|$)(.*)
             pathType: Prefix
             backend:
               service:
