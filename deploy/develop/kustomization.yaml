@@ -6,7 +6,7 @@ resources:
 - deployment.yaml
 - service.yaml
 - ingress.yaml
-configMapGenerator:
-  - name: red-config
-    envs:
-      - ../../.env
+# configMapGenerator:
+#   - name: red-config
+#     envs:
+#       - ../../.env
