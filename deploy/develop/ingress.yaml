@@ -17,4 +17,4 @@ spec:
               service:
                 name: red
                 port:
-                  name: web
+                  number: 80
