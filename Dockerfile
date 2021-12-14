@@ -1,9 +1,7 @@
-FROM nginx:alpine
+FROM nginx:1.21
 
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-
-ADD . /usr/share/nginx/html
+ADD ./index.html /usr/share/nginx/html
 
 EXPOSE 8080
 
-CMD ["nginx"]
+CMD ["nginx", "-g", "daemon off;"]
