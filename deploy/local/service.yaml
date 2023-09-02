@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: red
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: red
   ports:
