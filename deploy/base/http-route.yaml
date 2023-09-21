@@ -10,7 +10,6 @@ spec:
       namespace: kube-system
   hostnames:
     - red.dudo.dev
-    - red.marin.dev
   rules:
     - backendRefs:
         - name: red
